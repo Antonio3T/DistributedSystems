@@ -1,6 +1,6 @@
 File Management -> Data, Send, Server Coverage
-                |
-                V
+                    |
+                    V
                 Data Base -> Cities, Coverage
                 
                 
