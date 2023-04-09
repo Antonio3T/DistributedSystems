@@ -1,0 +1,4 @@
+Street,Zip,DoorNumber,City,Municipality,Ownership
+Street A,1,1Esq,N,New York,Owner
+Street B,2,2Dto,Y,Paris,Owner
+Street C,3,3Esq,C,London,Not Owner
