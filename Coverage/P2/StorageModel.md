@@ -1,7 +1,7 @@
 File Management -> Data, Send, Server Coverage
                     |
                     V
-                Data Base -> Cities, Coverage
+                Data Base -> Cities, Coverage, Logs
                 
                 
 ![image](https://user-images.githubusercontent.com/102244893/230801856-b5e2e342-b3a3-45c0-8711-f59a879f1667.png)
