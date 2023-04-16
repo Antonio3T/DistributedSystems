@@ -155,6 +155,8 @@ namespace _1
                         newData += string.Join(",", values) + Environment.NewLine;
                     }
 
+                    newData = newData.TrimEnd(Environment.NewLine.ToCharArray());
+
                     byte[] newFile = Encoding.ASCII.GetBytes(newData);
 
                     Client.Client.GetStream().Write(newFile, 0, newFile.Length);
