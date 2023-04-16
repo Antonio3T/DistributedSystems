@@ -180,13 +180,16 @@ namespace _1
         {
             Watcher.Changed += (s, e) =>
             {
-                mutex.WaitOne();
+                if (File.Exists(e.FullPath))
+                {
+                    mutex.WaitOne();
 
-                Thread.Sleep(1000);
+                    Thread.Sleep(1000);
 
-                CheckCities(e.FullPath);
+                    CheckCities(e.FullPath);
 
-                mutex.ReleaseMutex();
+                    mutex.ReleaseMutex();
+                }
             };
         }
 
@@ -260,6 +263,8 @@ namespace _1
             string Header = newlines.First() + ",Ownership";
             newlines = newlines.Skip(1).ToArray();
 
+            string Message = string.Empty;
+
             if (File.Exists(CoveragePath))
             {
                 List<string> matches = new List<string>();
@@ -285,16 +290,14 @@ namespace _1
 
                 CLines.ToArray();
 
-                string Message = string.Join("," + Id + Environment.NewLine, newlines) + "," + Id + Environment.NewLine + string.Join(Environment.NewLine, CLines);
-
-                WriteInFile(Message, CoveragePath, Header);
+                Message = string.Join("," + Id + Environment.NewLine, newlines) + "," + Id + Environment.NewLine + string.Join(Environment.NewLine, CLines);
             }
             else
             {
-                string Message = string.Join("," + Id + Environment.NewLine, newlines) + "," + Id;
-
-                WriteInFile(Message, CoveragePath, Header);
+                Message = string.Join("," + Id + Environment.NewLine, newlines) + "," + Id;
             }
+
+            WriteInFile(Message, CoveragePath, Header);
 
             ProcessFile(CoveragePath);
         }
@@ -375,7 +378,7 @@ namespace _1
             using (StreamWriter sw = File.CreateText(Path))
             {
                 sw.WriteLine(Header);
-                sw.WriteLine(Message);
+                sw.Write(Message);
             }
         }
     }
