@@ -146,19 +146,22 @@ namespace _1
             {
                 string Message = ReceiveMessage(Client);
 
-                if (Message.Equals("Sending Coverage"))
+                if (!string.IsNullOrEmpty(Message))
                 {
-                    ReceiveFile(Client);
+                    if (Message.Equals("Sending Coverage"))
+                    {
+                        ReceiveFile(Client);
 
-                    Thread.Sleep(1000);
-                }
-                else if (Message.Equals("Sending List Of Clients"))
-                {
-                    Console.WriteLine(Environment.NewLine + "Receiving List Of Clients...");
-                }
-                else
-                {
-                    Console.WriteLine("Server: " + Message);
+                        Thread.Sleep(1000);
+                    }
+                    else if (Message.Equals("Sending List Of Clients"))
+                    {
+                        Console.WriteLine(Environment.NewLine + "Receiving List Of Clients...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Server: " + Message);
+                    }
                 }
             }
         }
