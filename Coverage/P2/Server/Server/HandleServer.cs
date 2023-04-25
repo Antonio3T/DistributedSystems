@@ -32,7 +32,7 @@ namespace _1
             {
                 Client.Status = "Connected";
 
-                IPEndPoint ClientIP = (IPEndPoint)Client.Client.Client.LocalEndPoint;
+                IPEndPoint ClientIP = (IPEndPoint)Client.Client.Client.LocalEndPoint; // Change to RemoteEndPoint
                 Console.WriteLine("Client connected: " + ClientIP.Address + " on port number: " + ClientIP.Port);
 
                 Client.Name = ClientIP.Address.ToString();
