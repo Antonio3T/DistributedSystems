@@ -181,6 +181,7 @@ namespace _1
             Watcher.Changed += (s, e) =>
             {
                 if (File.Exists(e.FullPath))
+                if (File.Exists(e.Name))
                 {
                     mutex.WaitOne();
 
